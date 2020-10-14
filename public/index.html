@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.23.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.23.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.23.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.23.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.23.0/firebase-storage.js"></script>
+    <script defer src="/__/firebase/7.23.0/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/7.23.0/firebase-remote-config.js"></script>
+    <script defer src="/__/firebase/7.23.0/firebase-performance.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+    <style media="screen">
+      html,body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
+      #element {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 80px;
+        border: solid 1px;
+        border-radius: 42px;
+        margin-top: 3em;
+        /* font-size: 60px; */
+        background: #ffff;
+      }
+      #camera-icon {
+        margin: 10px;
+        cursor: pointer;
+        font-size: 49px;
+      }
+      span:hover {
+        opacity: 0.6;
+      }
+      input {
+        display: none;
+      }
+      #img-element {
+        max-height: 800px;
+        max-width: 800px;
+      }
+      #container {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        background: rgb(131,58,180);
+        background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,62,29,1) 52%, rgba(252,176,69,1) 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="img-element">
+        <img id="frame">
+      </div>
+      <div id="element">
+        <span id="camera-icon" class="material-icons">
+          photo_camera
+          </span>
+
+        <input type="file" accept="image/*" accept="image/*" capture="camera" id="camera">
+      </div>
+    </div>
+    <script>
+      $("span").click(function () {
+        $("input[type='file']").trigger('click');
+      });
+      const frame = document.getElementById('frame');
+      $('input[type="file"]').on('change', (e) => {
+        const file = e.target.files[0];
+        // Do something with the image file.
+        frame.src = URL.createObjectURL(file);
+      })
+    </script>
+  </body>
+</html>
